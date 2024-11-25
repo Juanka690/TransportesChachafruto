@@ -66,7 +66,7 @@ public class Main {
             vehiculo.setRuta(rutaSeleccionada);
 
             int viaje = 1; // Contador de viajes ida y vuelta
-            float pasajes = 0, peajes = 0, gasolinaGalones = 0, gasolinaTotal = 0, rentabilidad = 0, pasajerosCo = 0;
+            float pasajes = 0, peajes = 0, gasolinaGalones = 0, gasolinaTotal = 0, rentabilidad = 0;
 
             while (viaje <= 2) { // Iteración para el viaje de ida y vuelta
                 if (opcionVehiculo == 2 || opcionVehiculo == 3) { // Si es Van o Buseta
@@ -120,11 +120,10 @@ public class Main {
                 gasolinaGalones += vehiculo.calcularGasolinaConsumidaTotal() / vehiculo.PRECIO_GASOLINA;
                 gasolinaTotal += vehiculo.calcularGasolinaConsumidaTotal();
                 rentabilidad += vehiculo.calcularRentabilidad();
-                pasajerosCo += vehiculo.calcularConsumoBase();
             }
 
             // Mostrar los resultados en una tabla
-            tablaRentabilidad(pasajes, peajes, gasolinaGalones, gasolinaTotal, rentabilidad, pasajerosCo);
+            tablaRentabilidad(pasajes, peajes, gasolinaGalones, gasolinaTotal, rentabilidad);
         }
     }
 
@@ -135,15 +134,13 @@ public class Main {
      * @param gasolinaGalones consumo total de gasolina en galones.
      * @param gasolinaTotal costo total de la gasolina consumida.
      * @param rentabilidad diferencia entre ingresos y gastos del viaje.
-     * @param pasajerosCo consumo base relacionado con los pasajeros.
      */
-    public static void tablaRentabilidad(float pasajes, float peajes, float gasolinaGalones, float gasolinaTotal, float rentabilidad, float pasajerosCo) {
+    public static void tablaRentabilidad(float pasajes, float peajes, float gasolinaGalones, float gasolinaTotal, float rentabilidad) {
         System.out.println("\n\nResultados del viaje:");
         System.out.println("Ingresos por pasajes: $" + pasajes);
         System.out.println("Gastos por peajes: $" + peajes);
         System.out.println("Consumo de gasolina: " + gasolinaGalones + " galones");
         System.out.println("Gasto total en gasolina: $" + gasolinaTotal);
         System.out.println("Rentabilidad del viaje: $" + rentabilidad);
-        System.out.println("Consumo base por pasajeros: " + pasajerosCo + " galones");
     }
 }
